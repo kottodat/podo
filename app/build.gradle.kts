@@ -16,24 +16,33 @@ android {
 
 
     defaultConfig {
-        applicationId = "com.kottodat.podo"
-        minSdkVersion( 21)
-        targetSdkVersion( 29)
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Packages.name
+        minSdkVersion( Versions.androidMinSdkVersion)
+        targetSdkVersion( Versions.androidTargetSdkVersion)
+        versionCode = Versions.androidVersionCode
+        versionName = Versions.androidVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        getByName("debug") {
+            resValue("string", "versionCode", "$Versions.androidVersionCode")
+            resValue("string", "versionName",  "$Versions.androidVersionName")
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "$project.rootDir/tools/proguard-rules-debug.pro")
+        }
         getByName("release") {
+            resValue("string", "versionCode", "$Versions.androidVersionCode")
+            resValue("string", "versionName",  "$Versions.androidVersionName")
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
+
+    flavorDimensions("dimensions")
 
 
     compileOptions {
