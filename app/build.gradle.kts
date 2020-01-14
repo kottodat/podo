@@ -9,6 +9,8 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
@@ -17,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = Packages.name
-        minSdkVersion( Versions.androidMinSdkVersion)
-        targetSdkVersion( Versions.androidTargetSdkVersion)
+        minSdkVersion(Versions.androidMinSdkVersion)
+        targetSdkVersion(Versions.androidTargetSdkVersion)
         versionCode = Versions.androidVersionCode
         versionName = Versions.androidVersionName
 
@@ -28,14 +30,14 @@ android {
     buildTypes {
         getByName("debug") {
             resValue("string", "versionCode", "$Versions.androidVersionCode")
-            resValue("string", "versionName",  "$Versions.androidVersionName")
+            resValue("string", "versionName", "$Versions.androidVersionName")
             signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = true
+            isDebuggable = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "$project.rootDir/tools/proguard-rules-debug.pro")
         }
         getByName("release") {
             resValue("string", "versionCode", "$Versions.androidVersionCode")
-            resValue("string", "versionName",  "$Versions.androidVersionName")
+            resValue("string", "versionName", "$Versions.androidVersionName")
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -62,9 +64,25 @@ dependencies {
     implementation(Dep.AndroidX.coreKtx)
     implementation(Dep.AndroidX.constraint)
     implementation(Dep.AndroidX.design)
+    implementation(Dep.AndroidX.legacy)
 
     implementation(Dep.AndroidX.Navigation.fragmentKtx)
     implementation(Dep.AndroidX.Navigation.uiKtx)
+
+    implementation(Dep.Firebase.core)
+    implementation(Dep.Firebase.messaging)
+
+    implementation(Dep.Glide.glide)
+    kapt(Dep.Glide.compiler)
+    implementation(Dep.Glide.okhttp3Intergration)
+
+    implementation(Dep.Squareup.Retrofit.retrofit)
+    implementation(Dep.Squareup.Retrofit.converterGson)
+    implementation(Dep.Squareup.Retrofit.rxjava2)
+    implementation(Dep.Squareup.Retrofit.mock)
+    implementation(Dep.Squareup.OkHttp.loggingInterceptor)
+
+    implementation(Dep.Jakewharton.Timber.common)
 
     testImplementation(Dep.Test.junit)
     androidTestImplementation(Dep.Test.testRunner)

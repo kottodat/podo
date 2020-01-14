@@ -1,4 +1,4 @@
-package com.kottodat.podo
+package com.kottodat.podo.scene.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.kottodat.podo.R
+import com.kottodat.podo.SecondFragmentArgs
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

@@ -1,10 +1,11 @@
-package com.kottodat.podo
+package com.kottodat.podo.scene.main
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
+import com.kottodat.podo.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +15,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        drawer_layout.animation = AnimationUtils.loadAnimation(this,
+            R.anim.sss
+        )
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
+            if( drawer_layout.animation == null )
+                drawer_layout.animation = AnimationUtils.loadAnimation(this,
+                    R.anim.sss
+                )
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null).show()
         }
 
     }
