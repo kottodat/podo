@@ -1,4 +1,4 @@
-package com.kottodat.podo
+package com.kottodat.podo.scene.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.kottodat.podo.FirstFragmentDirections
+import com.kottodat.podo.R
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -25,7 +27,10 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment("From FirstFragment")
+            val action =
+                FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                    "From FirstFragment"
+                )
             findNavController().navigate(action)
         }
     }

@@ -47,6 +47,7 @@ object Dep {
         const val preference = "androidx.preference:preference:1.1.0"
         const val browser = "androidx.browser:browser:1.2.0"
         const val fragment = "androidx.fragment:fragment:1.1.0"
+        const val legacy = "androidx.legacy:legacy-support-v4:1.0.0"
 
         //        const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.1.0"
 //        const val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata:2.1.0"
